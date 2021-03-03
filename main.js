@@ -71,17 +71,31 @@ console.log("##### Challenge 6 #####");
 // For the string 'Whoa, I am the best!', console out the letters individually,
 // but also capitalize the letters in the third word.
 let string6 = "Whoa, I am the best!";
-let emptyChar = " ";
-let sum = 0;
-for (i=0; i<string6.length; i++) {
-if (i === " "){
-sum = sum + 1; 
-if( sum === 2){
-  i.toUpperCase();
-}console.log(string6);
+let spaceCount = 0;
+for (i = 0; i < string6.length; i++) {
+  if (string6[i] === " ") {
+    spaceCount = spaceCount + 1;
+  }
+  if (spaceCount === 2) {
+    console.log(string6[i].toUpperCase());
+  } else {
+    console.log(string6[i]);
+  }
 }
+console.log("----------------------------------");
+let numbSpacesBefore = 0;
+for (const letter of string6) {
+  //handle spaces
+  if (letter === " ") {
+    numbSpacesBefore = numbSpacesBefore + 1;
+  }
+  //handles other chars
+  if (numbSpacesBefore === 2) {
+    console.log(letter.toUpperCase());
+  } else {
+    console.log(letter);
+  }
 }
-console.log(string6);
 
 console.log("##### Challenge 7 #####");
 // 7.
@@ -106,13 +120,15 @@ const names =
 
 // You'll know you're at a new person's name when you hit the pipe character.
 
-// Don't print the pipes!
-for (i = 0; i < names.length; i++) {
-  const stringBeans = "Here today is: ";
-  if (names[i] === "|") {
-    console.log(names.split("|").join(stringBeans));
+// // Don't print the pipes!
+let name = "";
+for (const char of names) {
+  //if we hit a pipe ->
+  if (char === "|") {
+    console.log(`Here today is: ${name}`);
+    name = "";
+  } else {
+    name = name + char;
   }
-  if (names[i]= (i-names.length)===0){
-console.log(names.join(stringBeans);}
-  
-
+}
+console.log(`Here today is: ${name}`);
